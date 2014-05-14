@@ -1,0 +1,28 @@
+{
+  "name": "Datalist",
+  "version": "0.0.1",
+  "description": "An HTML5 Datalist fieldtype for Craft CMS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/johndwells/craft.datalist.git"
+  },
+  "keywords": [
+    "craftcms",
+    "html5",
+    "datalist"
+  ],
+  "author": "John D Wells",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/johndwells/craft.datalist/issues"
+  },
+  "homepage": "https://github.com/johndwells/craft.datalist",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-uglify": "^0.4.0"
+  }
+}

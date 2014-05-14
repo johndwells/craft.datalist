@@ -1,0 +1,23 @@
+<div class="jdw-datalist" style="whitespace: no-wrap">
+
+	<datalist id="{{ id }}">
+		{% for value in datalist | sort %}
+			<option value="{{ value }}">
+		{% endfor %}
+	</datalist>
+
+	<input class="text fullwidth" name="{{ name }}" list="{{ namespacedId }}" value="{{ value }}">
+
+	<span class="fallback" style="display: none;">
+		&nbsp;or&nbsp;
+		<div class="select">
+			<select data-datalist="{{ namespacedId }}">
+				<option value="">{{ "Choose:" | t }}</option>
+				{% for value in datalist | sort %}
+					<option value="{{ value }}">{{ value}}</option>
+				{% endfor %}
+			</select>
+		</div>
+	</span>
+
+</div>
