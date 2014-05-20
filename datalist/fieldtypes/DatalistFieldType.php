@@ -11,6 +11,31 @@ class DatalistFieldType extends BaseFieldType
 	}
 
 	/**
+	 * Defines the settings.
+	 *
+	 * @access protected
+	 * @return array
+	 */
+	protected function defineSettings()
+	{
+		return array(
+			'placeholder'   => array(AttributeType::String)
+		);
+	}
+
+	/**
+	 * Returns the field's settings HTML.
+	 *
+	 * @return string|null
+	 */
+	public function getSettingsHtml()
+	{
+		return craft()->templates->render('datalist/settings', array(
+			'settings' => $this->getSettings()
+		));
+	}
+
+	/**
 	 * Display fieldtype
 	 *
 	 * @param string $name  Fieldtype handle
