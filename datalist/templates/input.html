@@ -6,7 +6,14 @@
 		{% endfor %}
 	</datalist>
 
-	<input class="text fullwidth" name="{{ name }}" list="{{ namespacedId }}" value="{{ value }}">
+	<input
+		class="nicetext text fullwidth"
+		type="text"
+		autocomplete="off"
+		name="{{ name }}"
+		value="{{ value }}"
+		{% if isListNamespaced %}list="{{ id }}"{% else %}list="{{ namespacedId }}"{% endif %}
+		{% if settings.placeholder is not empty %}placeholder="{{ settings.placeholder }}"{% endif %}>
 
 	<span class="fallback" style="display: none;">
 		&nbsp;or&nbsp;

@@ -84,6 +84,8 @@ class DatalistFieldType extends BaseFieldType
 			'value' => $value,
 			'datalist' => $datalist,
 			'namespacedId' => $namespacedId,
+			'settings' => $this->getSettings(),
+			'isListNamespaced' => (version_compare(craft()->getVersion() . '.' . craft()->getBuild(), '2.0.2541') >= 0)
 		);
 
 		craft()->templates->includeJsResource('datalist/js/datalist.js');
