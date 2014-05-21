@@ -1,27 +1,23 @@
-(function ($) {
-	$(document).ready(function () {
-		// polyfill from https://github.com/thgreasi/datalist-polyfill
-		var nativeDatalist = !! ('list' in document.createElement('input')) && 
-			!! (document.createElement('datalist') && window.HTMLDataListElement);
+$.fn.datalist = function() { 
+	// polyfill check from https://github.com/thgreasi/datalist-polyfill
+	var nativeDatalist = !! ('list' in document.createElement('input')) && 
+		!! (document.createElement('datalist') && window.HTMLDataListElement);
 
-		if( ! nativeDatalist)
-		{
-			// adjust UI to show our fallback select
-			$('.jdw-datalist .fallback').show();
-			$('.jdw-datalist input.fullwidth').removeClass('fullwidth');
+	if( ! nativeDatalist)
+	{
+		// $(this) is <datalist id="{namespacedId}">
+		var thisInput = $(this).siblings('input'),
+			thisFallbackDiv = $(this).siblings('.fallback'),
+			thisSelect = thisFallbackDiv.find('select');
 
-			// now live bind to the rest
-			$('body').on('change', '.jdw-datalist select', function(e) {
-				var thisSelect = $(this),
-					thisSelectValue = thisSelect.val(),
-					thisInput = $('[list="' + thisSelect.data('datalist') + '"]');
+			thisFallbackDiv.show();
+			thisInput.removeClass('fullwidth');
 
-				if(thisSelectValue)
-				{
-					thisInput.val(thisSelect.val());
-				}
-			});
-		}
-	});
-
-})(jQuery);
+		thisSelect.on('change', function(e) {
+			if(thisSelectValue = $(this).val())
+			{
+				thisInput.val(thisSelectValue);
+			}
+		});
+	}
+}

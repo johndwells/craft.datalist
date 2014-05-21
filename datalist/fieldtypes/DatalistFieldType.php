@@ -77,6 +77,7 @@ class DatalistFieldType extends BaseFieldType
 		);
 
 		craft()->templates->includeJsResource('datalist/js/datalist.js');
+		craft()->templates->includeJs("$('#{$namespacedId}').datalist();");
 
 		return craft()->templates->render('datalist/input', $attrs);
 	}
