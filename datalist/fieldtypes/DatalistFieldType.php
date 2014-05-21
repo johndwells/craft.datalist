@@ -44,25 +44,13 @@ class DatalistFieldType extends BaseFieldType
 	 */
 	public function getInputHtml($name, $value)
 	{
-		// FYI to test whether field is translatable:
-		// $this->model->translatable);
-
-		// is an element?
-		if($this->element)
-		{
-			$datalist = craft()->db->createCommand()
-									->selectDistinct('field_' . $name)
-									->where('locale = :locale', array(':locale' => $this->element->locale))
-									->andWhere('field_' . $name . ' IS NOT NULL')
-									->andWhere('field_' . $name . ' != ""')
-									->from('content')
-									->queryColumn();
-		}
-		// happens when rendering an empty matrix
-		else
-		{
-			$datalist = array();
-		}
+		$datalist = craft()->db->createCommand()
+							   ->selectDistinct('field_' . $name)
+							   ->where('locale = :locale', array(':locale' => craft()->locale->id))
+							   ->andWhere('field_' . $name . ' IS NOT NULL')
+							   ->andWhere('field_' . $name . ' != ""')
+							   ->from('content')
+							   ->queryColumn();
 
 		// Our value may not yet be part of datalist if a new entry
 		// was submitted but there were validation errors.
